@@ -1,0 +1,69 @@
+<div class="container" *ngIf="isAuthenticated &&!hasSeller">
+  <div class="jumbotron">
+      <h1>GET STARTED WITH SA</h1>
+      <p>Please select the product from the navigation link.</p>
+  </div>
+</div>
+
+ <div class="mat-elevation-z8" [hidden]="!(isAuthenticated && hasSeller)">
+    <table mat-table [dataSource]="dataSource" >
+  
+      <!-- ANPERSON ID Column -->
+      <ng-container matColumnDef="anPersonId">
+        <th mat-header-cell *matHeaderCellDef> ANPERSON ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.anPersonId}} </td>
+      </ng-container>
+  
+      <!-- First Name Column -->
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef> FIRST NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+      </ng-container>
+  
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> LAST NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+      </ng-container>
+  
+       <!-- External ID Column -->
+      <ng-container matColumnDef="externalId">
+        <th mat-header-cell *matHeaderCellDef> EXTERNAL ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.externalId}} </td>
+      </ng-container>
+        <!-- Company Name Column -->
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef> COMPANY </th>
+        <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+      </ng-container>
+        <!-- Card Type Column -->
+      <ng-container matColumnDef="cardType">
+        <th mat-header-cell *matHeaderCellDef> CARD TYPE </th>
+        <td mat-cell *matCellDef="let element"> {{element.cardType}} </td>
+      </ng-container>
+        <!-- Product Column -->
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> PRODUCT </th>
+        <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+      </ng-container>
+        <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> PHONE </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+        <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> EMAIL </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10,20,30,40,50]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
